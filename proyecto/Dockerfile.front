@@ -1,0 +1,4 @@
+FROM node:8
+WORKDIR /usr/app/src
+EXPOSE 8080
+CMD [ "npm", "run", "serve" ]

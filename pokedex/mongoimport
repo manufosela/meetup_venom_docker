@@ -1,0 +1,1 @@
+mongoimport --db midb --collection pokedex --file pokedata.json --jsonArray

@@ -1,0 +1,30 @@
+version: "3"
+services:
+  api:
+    container_name: api
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "3000:3000"
+    links:
+      - mongo
+    depends_on:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - "27017:27017"
+  nginx-pokedex:
+    container_name: nginx-pokedex
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    volumes:
+      - ./api.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    links:
+      - api

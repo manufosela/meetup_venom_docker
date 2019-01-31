@@ -1,0 +1,8 @@
+FROM node:8
+WORKDIR /usr/src/app
+COPY api/package.json ./
+COPY api/package-lock.json ./
+COPY api/index.js ./
+RUN npm install
+EXPOSE 3000
+CMD [ "node", "index.js" ]
